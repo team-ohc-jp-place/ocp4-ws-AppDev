@@ -3,13 +3,13 @@
 |:---:|:---|:---|
 |13:00-13:30|受付||
 |13:30-14:00|Red Hat OpenShift 4 概要|<講義>|
-|14:30-15:30|Red Hat OpenShift 4 基礎ワークショップ|<ハンズオン> <br> OpenShift 4 環境デプロイメント|
-|15:30-15:45|Break|
-|15:45-16:45|Red Hat OpenShift 4 基礎ワークショップ|<講義+ハンズオン> <br> OpenShift 4 を活用したビルド/デプロイメントパイプライン|
-|16:45-17:00|まとめ||
+|14:00-15:00|Red Hat OpenShift 4 基礎ワークショップ|<ハンズオン> <br> OpenShift 4 環境デプロイメント|
+|15:00-15:15|Break|
+|15:15-16:30|Red Hat OpenShift 4 基礎ワークショップ|<講義+ハンズオン> <br> OpenShift 4 を活用したビルド/デプロイメントパイプライン|
+|16:30-17:00|まとめ+QA||
 
 # 諸連絡
-OCP環境情報など ==> https://bit.ly/31V0DAf
+OCP環境情報など(Etherpad) ==> https://bit.ly/31V0DAf
 
 # ハンズオン概要
 本ハンズオンは，OpenShift4(以降，OCPまたはOCP4)の基礎編です。
