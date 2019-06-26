@@ -43,9 +43,24 @@ OCP環境情報など(Etherpad) ==> https://bit.ly/31V0DAf
     - https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-bundle.html
 1. AWSアクセスキーやシークレットアクセスキー，デフォルトリージョンなどをセットアップ
 1. AWSリソース制限緩和
-    - EIP
+    - Elastic IP
     - EC2
     - VPC
+
+|タイプ|対象のサービス|リージョン|期待するLimit値|AWSデフォルト値|
+|:---:|:---|:---|:---:|:---|
+|VPC|VPC Elastic IPアドレス|アジアパシフィック(東京)|4|xx|
+|VPC|AZあたりのNATゲートウェイ|アジアパシフィック(東京)|1|xx|
+|VPC|リージョンあたりのVPC|アジアパシフィック(東京)|4|xx|
+|EC2|EC2上限  (m4.large)|アジアパシフィック(東京)|6|xx|
+|EC2|EC2上限  (m4.xlarge)|アジアパシフィック(東京)|3|xx|
+|ELB|Network Load Balancer|アジアパシフィック(東京)|3|x|
+
+※最新情報は都度確認ください。(上記は2019/6/26時点のものです)
+
+AWS上のデフォルト値: 
+
+OpenShift4.1をIPIインストールする際のAWSリソース要件: xxx
 
 # 0) OCP4クラスターの構築
 ## 0-1) 事前準備
@@ -120,7 +135,20 @@ IPIを使用してK8s(OCP)クラスターを構築します。
 IPIで構成されたAWSリソースや，OCP4コンソールを確認します
 
 # 2) アプリケーションのデプロイ
-OCPはカタログ機能を備えています。JavaやPythonなどの各種ランタイムやデータベースなどのミドルウェアを簡単にK8s上で使うことができます。実際にカタログ上からK8s上にデプロイしてみましょう。
+OpenShiftでは，いくつかの方法でアプリケーションをクラスター上にデプロイすることができます。
+
+- 既存のDockerイメージを使ってデプロイする方法
+- ソースコードとS2I(ツール)を使ってデプロイする方法
+- ソースコードとDockerfileを使ってデプロイする方法
+
+ここでは2番目のS2I(Source-to-Image)というツールを使って以下の2つのコンポーネントからコンテナイメージを生成し，コンテナアプリケーションをデプロイします。
+
+- **リポジトリURL** : GitHubなどソースコード格納場所
+- **s2i builder image** : S2Iスクリプトが含まれているDockerイメージ
+
+またOCPは，カタログ機能(Developer Catalog)を備えています。JavaやPython，nginxなどのS2I Builder Imageをカタログ上で選択，あるいはカタログ上に追加でき，アプリケーションを簡単にOCP上にデプロイできます。
+
+新規にプロジェクトを作成し，サンプルのコードとPython用のS2I Builder Imageを使ってコンテナイメージを作成し，アプリケーションをOCP上にデプロイしてみましょう。
 
 ## 2-1) プロジェクトの作成
 1. ブラウザを立ち上げて **OCPコンソール** に接続します
@@ -158,6 +186,7 @@ OCPはカタログ機能を備えています。JavaやPythonなどの各種ラ�
     ![](images/create_project_result.png)
 
 ## 2-2) カタログ(ソース)からアプリケーションをデプロイ
+
 1. Catalog > Developer Catalog > Python を選択します
 
     ![](images/developer_catalog.png)
@@ -229,7 +258,7 @@ OCPはカタログ機能を備えています。JavaやPythonなどの各種ラ�
 
     ![](images/access_application_result.png)
 
-## Option-1) 既存コンテナイメージを使ってOCPにアプリデプロイ
+## Option 1) 既存コンテナイメージを使ってOCPにアプリデプロイ
 1. 任意のプロジェクトを選択
     
     Home > Project > myprj(任意)
@@ -276,6 +305,17 @@ OCPはカタログ機能を備えています。JavaやPythonなどの各種ラ�
 >- カタログ上で指定したソースコードからコンテナイメージをビルドして，そのイメージを使ってアプリケーションをデプロイする方法
 >- 既存のコンテナイメージをOCP上にアップロードして，コンテナイメージを使ってアプリケーションをデプロイする方法
 >- XXXXXX (Import yamlはやる？)
+
+# Option 2) Operator Hubの利用
+Operatorは，ランタイムやデータベースなどのミドルウェアのデプロイ，運用を支えてくれるテクノロジーです。OCPでは，ミドルウェアなどの運用以外にも，OCPクラスター自身を維持管理するためにもCluster Opeatorを活用しています。クラスター運用のために25個(20190626時点)動作しています。
+
+OCPでは初期状態でOperatorを使うことができます。実際にOCP上にデプロイしてみましょう。
+
+1. OperatorHub
+
+1. Cluster Operator
+
+1. Prometheus Operatorのデプロイ
 
 # 3) CI/CDによる自動デプロイ
 **UNDER CONSTRUCTION**
