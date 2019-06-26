@@ -1,14 +1,19 @@
+Lab2. Jenkinsベースのビルドパイプライン では以下の内容実施します。
+- 既存コンテナイメージをシンプルにデプロイ
+- Jenkinsを使用したビルドパイプライン体験
+
 # 既存コンテナイメージを使ってOCPにデプロイ
 - 既存コンテナイメージ -> OCP上にデプロイ
 - Dockerfile -> コンテナイメージビルド -> OCP上にデプロイ
   - s2ibuildできる環境が必要
   - cri-o + buildah環境(RHEL8)が必要
 
-既存のコンテナイメージをデプロイするシンプルな手順を実施します。
+Lab1ではソースコードとbuidler imageを合体させてコンテナイメージを作成し，OCP上にデプロイしました。Lab2の最初のステップでは，**既にコンテナイメージ化済**のターミナルアプリケーションをOCP上にデプロイする手順を実施します。
 
-1. 任意のプロジェクトを選択
+1. プロジェクト名を指定します
     
-    Home > Project > myprj (任意)
+    プロジェクト名には，**必ずご自身のログイン時のユーザー名 (例: "user01a")** を指定してください。    
+    Home > Project > user01a (例)
     
     ![](images/create_application_using_existedImage_1.png)
 
@@ -17,7 +22,7 @@
     ![](images/create_application_using_existedImage_2.png)
 
 1. **Namespace**(プロジェクト名)，と**Image Name** を指定します
-    - Namespace: `作成済プロジェクト(例: myprj)`
+    - Namespace: `作成済プロジェクト(例: user01a)`
     - Image Name: `quay.io/openshiftlabs/workshop-terminal:2.4.0`
 
     ![](images/create_application_using_existedImage_3.png)
@@ -29,7 +34,7 @@
 1. 外部からアクセスするための **Route** を作成します
 
     Networking > Routes > Create Route を選択し，以下を指定した後 **Create** を選択します
-    - Name: `任意のRoute名前(例: workshop-terminal)`
+    - Name: `Route名(例: user01a-workshop-terminal)`
     - Service: `対象アプリ用のService(例: workshop-terminal)`
     - Target Port: `10080 → 10080(TCP)`
 

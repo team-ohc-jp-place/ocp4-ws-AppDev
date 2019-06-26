@@ -12,7 +12,7 @@ Red Hat OpenShift Container Platform 4 ワークショップ
 |16:30-17:00|QA||
 
 # 諸連絡
-OCPクラスター接続情報など (Etherpad) ==> https://bit.ly/31V0DAf
+OCPクラスター接続情報など (Etherpad) ==> http://bit.ly/ocp4ws-memo
 
 # ハンズオン環境および前提
 本ハンズオンは，Kubernetesクラスター(OpenShift)の動作環境としてAWSを使用します。今回は構築済です。
