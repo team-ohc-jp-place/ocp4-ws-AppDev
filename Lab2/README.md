@@ -1,7 +1,14 @@
 # 既存コンテナイメージを使ってOCPにデプロイ
+- 既存コンテナイメージ -> OCP上にデプロイ
+- Dockerfile -> コンテナイメージビルド -> OCP上にデプロイ
+  - s2ibuildできる環境が必要
+  - cri-o + buildah環境(RHEL8)が必要
+
+既存のコンテナイメージをデプロイするシンプルな手順を実施します。
+
 1. 任意のプロジェクトを選択
     
-    Home > Project > myprj(任意)
+    Home > Project > myprj (任意)
     
     ![](images/create_application_using_existedImage_1.png)
 
@@ -37,17 +44,8 @@
 
     ![](images/create_route_for_existedImage_result_2.png)
 
-以上で，OCP上にアプリケーションをデプロイする手順は完了です。
-
->ハンズオン要約
->
->2つのアプリケーションデプロイの方法を実施しました。
->- カタログ上で指定したソースコードからコンテナイメージをビルドして，そのイメージを使ってアプリケーションをデプロイする方法
->- 既存のコンテナイメージをOCP上にアップロードして，コンテナイメージを使ってアプリケーションをデプロイする方法
->- XXXXXX (Import yamlはやる？)
-
 # Jenkinsベースのビルドパイプライン
-**UNDER CONSTRUCTION**
+
 
 ```
 oc get templates -n openshift
@@ -71,3 +69,4 @@ oc get route
 oc start-build nodejs-sample-pipeline
 ```
 
+OCPコンソール上でbuild congfigのyamlを開いて何かを編集して，再度実行する
