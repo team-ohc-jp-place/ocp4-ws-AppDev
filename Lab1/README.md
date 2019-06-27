@@ -7,7 +7,7 @@ Lab1. OCP4の構築とコンテナビルド&デプロイ では以下の内容�
 ## AWS環境の準備
 1. AWSアカウントの作成
 1. IAMユーザー作成(AdministratorAccessポリシーをセット)
-1. sshキーペアを作成し，AWS上に登録します
+1. sshキーペアを作成
     ```
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_ocp
     ```
@@ -15,26 +15,39 @@ Lab1. OCP4の構築とコンテナビルド&デプロイ では以下の内容�
 1. シークレットアクセスキー取得
 1. AWS CLI取得
     - https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-bundle.html
-1. AWSアクセスキーやシークレットアクセスキー，デフォルトリージョンなどをセットアップ
-1. AWSリソース制限緩和
-    - Elastic IP
-    - EC2
-    - VPC
+1. AWS CLIを使ってAWSアカウント関連のセットアップ
+    ```
+    $ aws configure
+    ```
+    - アクセスキー
+    - シークレットアクセスキー
+    - デフォルトリージョン
+    - etc.
+    
+1. AWSリソース制限緩和 (新規アカウント作成時はリソース利用可能量が小さいので注意)
+   - Elastic IP
+   - EC2
+   - VPC
+   - NLB
+   - etc.
 
-|タイプ|対象のサービス|リージョン|期待するLimit値|AWSデフォルト値|
-|:---:|:---|:---|:---:|:---|
-|VPC|VPC Elastic IPアドレス|アジアパシフィック(東京)|4|xx|
-|VPC|AZあたりのNATゲートウェイ|アジアパシフィック(東京)|1|xx|
-|VPC|リージョンあたりのVPC|アジアパシフィック(東京)|4|xx|
-|EC2|EC2上限  (m4.large)|アジアパシフィック(東京)|6|xx|
-|EC2|EC2上限  (m4.xlarge)|アジアパシフィック(東京)|3|xx|
-|ELB|Network Load Balancer|アジアパシフィック(東京)|3|x|
+    >参考:
+    >
+    >OCPが必要とするリソース計算ツール
+    >https://access.redhat.com/labsinfo/ocplimitscalculator
 
-※最新情報は都度確認ください。(上記は2019/6/26時点のものです)
 
-AWS上のデフォルト値: 
+|タイプ|対象のサービス|リージョン|期待するLimit値
+|:---:|:---|:---|:---:|
+|VPC|VPC Elastic IPアドレス|アジアパシフィック(東京)|4|
+|VPC|AZあたりのNATゲートウェイ|アジアパシフィック(東京)|1|
+|VPC|リージョンあたりのゲートウェイVPC|アジアパシフィック(東京)|1|
+|EC2|EC2インスタンス  (m4.large)|アジアパシフィック(東京)|3|
+|EC2|EC2インスタンス  (m4.xlarge)|アジアパシフィック(東京)|3|
+|ELB|Network Load Balancer|アジアパシフィック(東京)|5|
 
-OpenShift4.1をIPIインストールする際のAWSリソース要件: xxx
+上記はOCP4 on AWS 1クラスターだけ作る場合
+(最新情報は都度確認ください。上記は2019/6/26時点のものです。)
 
 ## OCP4インストーラおよびクライアントCLIの取得
 IPIを使用してK8s(OCP)クラスターを構築します。
@@ -71,11 +84,13 @@ IPIを使用してK8s(OCP)クラスターを構築します。
     - region: <任意>
     - domain: <Route53で事前取得したドメイン>
     - cluster name: 任意
-    - aws access key: XXXXX
-    - aws secret key: XXXXX
+    - aws access key: <IAMで確認>
+    - aws secret key: <IAMで確認>
     - pull secret: <cloud.redhat.comから取得>
 
-         (※**Pull Secret** はRed Hat IDごとに異なります)
+         (※**Pull Secret** はRed Hat IDごとに異なります)  
+    >参考: [AWSに導入する場合のカスタマイズ設定](https://docs.openshift.com/container-platform/4.1/installing/installing_aws/installing-aws-customizations.html#installation-configuration-parameters_install-customizations-cloud)
+
 
 1. インストール用の設定ファイルをコピーして保管しておきます
 
@@ -88,7 +103,7 @@ IPIを使用してK8s(OCP)クラスターを構築します。
     >openshift-installコマンドでクラスター構築を行った際に，install-config.yamlはdeleteされてしまうため，何らかの形でバックアップを取っておくことをおすすめします。
     
     
-1. OCP4をインストールします
+1. OCP4クラスターをAWS上にインストールします
 
     ```
     $ openshift-install create cluster
@@ -119,7 +134,6 @@ IPIで構成されたAWSリソースや，OCP4コンソールを確認します�
     >OCPコンソール: "https://console-openshift-console.apps.user01.ocp41.nosue.mobi"
     >
     >ユーザー名: "user01a"，パスワード: "ocpuser"
-    ```
     
 # コンテナイメージのビルドとデプロイ
 OpenShiftでは，いくつかの方法でアプリケーションをクラスター上にデプロイすることができます。
