@@ -158,3 +158,7 @@ Lab1ではソースコードとbuidler imageを合体させてコンテナイメ
 >具体的には，**カタログ(Developer Catalog)** からPythonテンプレートを選択して，ソースコードとbuilder image(Python)を合体させることでコンテナイメージを作成し，デプロイしていました。
 >
 >また，OCPではJenkinsに限らず，ランタイムや他ミドルウェア，ソフトウェアなど多数のテンプレートを用意しています。自身(自社)でよく使うテンプレートを自作してカタログ上に追加することも可能です。その場合は，S2Iスクリプトを書く必要があります。
+>
+>他にもCI/CDを試したい場合は下記リンクを参照下さい。
+>
+>https://adoc.redhat.partners/?https%3A%2F%2Fadoc.redhat.partners%2Flab%2Focp-workshop-dev-cicd.adoc.REPL&no-header-footer&numbered=&toc!
