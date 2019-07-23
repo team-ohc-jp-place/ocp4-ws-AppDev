@@ -17,7 +17,7 @@ Lab3ではNode.jsアプリケーションを作成し、MongoDBと接続する�
 
     ![](images/mongo1.png)
 
-1. Create Service Instanceをクリックしたら下記のような画面になります。「Service Instance Name」「Database Service Name」の先頭にユーザー名を足してCreateをクリックしてください。
+1. Create Service Instanceをクリックしたら下記のような画面になります。そのままCreateをクリックしてください。
     
     ![](images/mongo2.png)
 
@@ -25,11 +25,13 @@ Lab3ではNode.jsアプリケーションを作成し、MongoDBと接続する�
 
     ![](images/mongo3.png)
 
-1. 「Service Binding Name」が下記のように「ユーザー名-mongodb-ephemeral」のようになっているはずなので、そのままCreateを選択してください。
+1. 「Service Binding Name」が下記のように「mongodb-ephemeral」のようになっているはずなので、そのままCreateを選択してください。
 
     ![](images/mongo4.png)
     
-1. 下記画面に遷移しますので、「SECRET」の「ユーザー名-mongodb-ephemeral」のリンクを選択してください。`
+1. 下記画面に遷移しますので、「SECRET」の「mongodb-ephemeral」のリンクを選択してください。
+    
+(作成されるまで多少時間が掛かります)
     
 ![](images/mongo5.png)
     
@@ -45,7 +47,7 @@ Lab3ではNode.jsアプリケーションを作成し、MongoDBと接続する�
 
    ![](images/node1.png)
 
-2. Node.jsを選択したら、下記のように Nameは「ユーザー名-multi-pod-app」、Git Repositoryには
+2. Create Applicationを選択したら、下記のように Nameは「ユーザー名-multi-pod-app」、Git Repositoryには
 
    「https://github.com/openshift/nodejs-ex.git」を入れ、Createを選択してください。
 
@@ -81,7 +83,7 @@ Lab3ではNode.jsアプリケーションを作成し、MongoDBと接続する�
 
    MONGODB_ADMIN_PASSWORD → ADMIN_PASSWORD
 
-   DATABASE_SERVICE_NAME → ユーザー名-mongodb
+   DATABASE_SERVICE_NAME → mongodb
 
    ![](images/node_mongo1.png)
 
