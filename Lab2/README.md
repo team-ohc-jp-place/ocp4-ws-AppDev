@@ -11,7 +11,7 @@ Lab2. Jenkinsベースのビルドパイプライン では以下の内容実施
 Lab1ではソースコードとbuidler imageを合体させてコンテナイメージを作成し，OCP上にデプロイしました。Lab2の最初のステップでは，**既にコンテナイメージ化済**のターミナルアプリケーションをOCP上にデプロイする手順を実施します。
 
 1. プロジェクトを選択します
-    
+
     プロジェクトは，**必ずご自身のログイン時のユーザー名 (例: "user01a")** のものを選択してください。    
     Home > Project > user01a (例)
     
@@ -78,7 +78,8 @@ Lab1ではソースコードとbuidler imageを合体させてコンテナイメ
 1. 自身用の新規プロジェクトを作成します  **(例: user01a-jenkins)**
 
     ```
-    $ oc project user01a-jenkins (<== ご自身のプロジェクト名)
+    $ oc login 接続先host
+    $ oc new-project user01a-jenkins (<== ご自身のプロジェクト名)
     $ oc project
     Using project "user01a-jenkins" on server XXXXXXX
     
@@ -99,6 +100,12 @@ Lab1ではソースコードとbuidler imageを合体させてコンテナイメ
     $ oc project
     ```
 
+1. Jenkinsのメモリを上げます。openshiftコンソールから
+
+    Workloads > Deployment Configs > jenkins > YAML と選び、下記画像のようにmemoryを2Gに変更してsaveしてください。
+    
+    ![](images/jenkins_edit_deploymentconfig_1.png)
+    
 1. Jenkinsにパイプライン設定(nodejs-sample-pipeline)を入れます
 
     ```
@@ -108,6 +115,7 @@ Lab1ではソースコードとbuidler imageを合体させてコンテナイメ
     nodejs-sample-pipeline  # oc createで作成されたPipeline
     
     $ oc get buildconfig/nodejs-sample-pipeline -o yaml　# 中身を確認
+    ```
 
 1. パイプラインを使用してビルドします
 
