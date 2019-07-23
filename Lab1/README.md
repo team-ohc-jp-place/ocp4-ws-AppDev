@@ -1,21 +1,21 @@
-Lab1. OCP4の構築とコンテナビルド&デプロイ では以下の内容実施します。
-- OCP4クラスターの構築
-- OCP4 コンソールツアー
+# 前半: OCP4の構築とコンテナビルド&デプロイ
+- <デモ>OCP4クラスターの構築
+- <デモ>OCP4 コンソールツアー
 - コンテナイメージのビルドとデプロイ
 
-# OCP4クラスターの構築
+# <デモ>OCP4クラスターの構築
 ## AWS環境の準備
 1. AWSアカウントの作成
-1. IAMユーザー作成(AdministratorAccessポリシーをセット)
-1. sshキーペアを作成
+2. IAMユーザー作成(AdministratorAccessポリシーをセット)
+3. sshキーペアを作成
     ```
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_ocp
     ```
-1. アクセスキー取得
-1. シークレットアクセスキー取得
-1. AWS CLI取得
+4. アクセスキー取得
+5. シークレットアクセスキー取得
+6. AWS CLI取得
     - https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-bundle.html
-1. AWS CLIを使ってAWSアカウント関連のセットアップ
+7. AWS CLIを使ってAWSアカウント関連のセットアップ
     ```
     $ aws configure
     ```
@@ -24,7 +24,7 @@ Lab1. OCP4の構築とコンテナビルド&デプロイ では以下の内容�
     - デフォルトリージョン
     - etc.
     
-1. AWSリソース制限緩和 (新規アカウント作成時はリソース利用可能量が小さいので注意)
+8. AWSリソース制限緩和 (新規アカウント作成時はリソース利用可能量が小さいので注意)
    - Elastic IP
    - EC2
    - VPC
@@ -39,32 +39,33 @@ Lab1. OCP4の構築とコンテナビルド&デプロイ では以下の内容�
 
 |タイプ|対象のサービス|リージョン|期待するLimit値
 |:---:|:---|:---|:---:|
-|VPC|VPC Elastic IPアドレス|アジアパシフィック(東京)|4|
-|VPC|AZあたりのNATゲートウェイ|アジアパシフィック(東京)|1|
-|VPC|リージョンあたりのゲートウェイVPC|アジアパシフィック(東京)|1|
-|EC2|EC2インスタンス  (m4.large)|アジアパシフィック(東京)|3|
-|EC2|EC2インスタンス  (m4.xlarge)|アジアパシフィック(東京)|3|
-|ELB|Network Load Balancer|アジアパシフィック(東京)|5|
+|VPC|VPC Elastic IPアドレス|<インストール先リージョン>|4|
+|VPC|AZあたりのNATゲートウェイ|<インストール先リージョン>|1|
+|VPC|リージョンあたりのゲートウェイVPC|<インストール先リージョン>|1|
+|EC2|EC2インスタンス  (m4.large)|<インストール先リージョン>|3|
+|EC2|EC2インスタンス  (m4.xlarge)|<インストール先リージョン>|3|
+|ELB|Network Load Balancer|<インストール先リージョン>|5|
 
-上記はOCP4 on AWS 1クラスターだけ作る場合
-(最新情報は都度確認ください。上記は2019/6/26時点のものです。)
+上記はOCP4 on AWS 1クラスターあたりに必要なリソースです。
+(最新情報は都度ご確認ください。上記は2019/6/26時点のものです。)
 
 ## OCP4インストーラおよびクライアントCLIの取得
-IPIを使用してK8s(OCP)クラスターを構築します。
+IPI(Installer Provisioned Infrastructure:全自動インストール)でOCPクラスターを構築します。
+
 1. OCP4を構築するための Get startedページを開きます
 
     ==> https://cloud.redhat.com/openshift/install
 
     (※Red Hat ID 未所持の場合は，新規に作成します。)
 
-1. インストール先のプラットフォームは， **AWS** を選択します
-1. インストール方法は，**Installer-Provisioned Infrastructure** を選択します
-1. インストーラおよびクライアントのCLIをダウンロードします
+2. インストール先のプラットフォームは， **AWS** を選択します
+3. インストール方法は，**Installer-Provisioned Infrastructure** を選択します
+4. インストーラおよびクライアントのCLIをダウンロードします
     - ファイルサーバー(https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/) から以下の2つを取得できます
         - **openshift-install**
           - OCPをインストールするためのCLI (Mac/Linux用あり)
         - **oc**
-          - OCPを制御するためのCLI (Mac/Linux/Windows用あり)
+          - OCPを制御するためのCLI (Mac/Linux/Windows64用あり)
           
     >Tips:
     >
@@ -121,19 +122,9 @@ IPIを使用してK8s(OCP)クラスターを構築します。
     >- NLB(Network Load Balancer): 2つ
     >- NATゲートウェイ: 3つ
 
-# OCP4 コンソールツアー
+# <デモ>OCP4 コンソールツアー
 IPIで構成されたAWSリソースや，OCP4コンソールを確認します。
 
-1. ブラウザで **各自のOCPコンソール** にログインします
-
-    各自のOCPコンソールログイン情報を確認してください ==> http://bit.ly/ocp4ws-memo
-
-    >
-    >例: "user01a" を使っている場合:
-    >
-    >OCPコンソール: "https://console-openshift-console.apps.user01.ocp41.nosue.mobi"
-    >
-    >ユーザー名: "user01a"，パスワード: "ocpuser"
     
 # コンテナイメージのビルドとデプロイ
 OpenShiftでは，いくつかの方法でアプリケーションをクラスター上にデプロイすることができます。
@@ -154,7 +145,7 @@ OpenShiftでは，いくつかの方法でアプリケーションをクラス�
 ## プロジェクト(Namespace+α)の作成
 1. ブラウザを立ち上げて **OCPコンソール** に接続します
 
-    各自のOCPコンソールログイン情報を確認してください ==> http://bit.ly/ocp4ws-memo
+    各自のOCPコンソールログイン情報を確認してください ==> http://bit.ly/openshift-20190724
     
    ![](images/console_login_capsmalt.png)
 
@@ -167,13 +158,13 @@ OpenShiftでは，いくつかの方法でアプリケーションをクラス�
     >![](images/console_login_error_2.png)
 
 
-1. Home > Projects > Create Project を選択します
+2. Home > Projects > Create Project を選択します
 
     ![](images/create_project.png)
 
-1. プロジェクト名を指定し，**Create** を選択します
+3. プロジェクト名を指定し，**Create** を選択します
     
-    プロジェクト名には，**必ずご自身のログイン時のユーザー名 (例: "user01a")** を指定してください。
+    プロジェクト名には，**必ずご自身のログイン時のユーザー名 (例: "dev01")** を指定してください。
 
     ![](images/create_project_input_projName.png)
 
@@ -239,7 +230,7 @@ OpenShiftでは，いくつかの方法でアプリケーションをクラス�
 
 
 1. **Route名**，対象アプリ用の**Service**，**Port** を指定します
-    - Name: **`ログイン時に使用したご自身のユーザー名 (例: user01a)`**
+    - Name: **`任意の名称 (例: mypyapp)`**
     - Service: `mypyapp`
     - Target Port: `8080 → 8080(TCP)`
 1. 最後に **Create** を選択します
@@ -250,11 +241,11 @@ OpenShiftでは，いくつかの方法でアプリケーションをクラス�
 
 ## アプリケーションの動作確認
 1. Networking > Routes > ルート名 を選択し，Location欄にあるリンクを開きます
-    例: `http://mypyroute-myprj.apps.ocp41-ipi-0611.k8show.net`
+    例: `http://mypyapp-dev01.apps.cluster-tokyo-ef76.tokyo-ef76.openshiftworkshop.com/`
 
     ![](images/access_application.png)
 
-1. Pythonアプリのサンプルページが表示されることを確認します
+2. Pythonアプリのサンプルページが表示されることを確認します
 
     ![](images/access_application_result.png)
  
@@ -267,7 +258,7 @@ OpenShiftでは，いくつかの方法でアプリケーションをクラス�
 
 ```
 - Project名(NameSpace): blog-<yourID>
-- BaseImage(BuilderImage): Python 3.5
+- BaseImage(BuilderImage): Python 3.6
 - Git Repository: https://github.com/openshift-katacoda/blog-django-py
 - Routes名: blog
 ```
