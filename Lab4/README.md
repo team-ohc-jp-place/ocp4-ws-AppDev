@@ -19,7 +19,7 @@ Lab4. 様々なデプロイメント手法 では下記を説明します。
     $ oc run blue --image=openshift/hello-openshift --replicas=2
     ```
 
-1. 作成したアプリケーションのdeploymentconfigを設定します。
+1. 作成したアプリケーションのレスポンスを設定します。
 
     ```
     $ oc set env dc/blue RESPONSE="Hello from Blue"
@@ -45,7 +45,7 @@ Lab4. 様々なデプロイメント手法 では下記を説明します。
     $ oc expose dc/green --port=8080
     ```
 
-1. トラフィックを切り替えます。
+1. トラフィックをBlueに設定します。
 
     ```
     $ oc set route-backends bluegreen blue=100 green=0
@@ -67,7 +67,7 @@ Lab4. 様々なデプロイメント手法 では下記を説明します。
     ...
     ```
 
-1. 今度は別のバージョンに切り替えます。
+1. 今度はトラフィックをGreenに向けます。
 
     ```
     $ oc set route-backends bluegreen blue=0 green=100
@@ -87,144 +87,144 @@ Lab4. 様々なデプロイメント手法 では下記を説明します。
     Hello from Green
     ...
     ```
-    
-    # Canary Deployment
-    
-    次にCanary Deployment を説明していきます。Canary Deploymentでは異なるバージョンのアプリケーションを二つ作り、トラフィックを少しずつ新しいバージョンへ流して問題無ければそのまま全て切り替える手法です。
-    
-    1. プロジェクトを選択します。
-    
-       ```
-       $ oc login 接続先クラスタ
-       $ oc project ユーザー名 (ex. oc project dev11)
-       ```
-    
-    2. アプリケーションを作成します。
-    
-       ```
-       $ oc run prod --image=openshift/hello-openshift --replicas=2
-       $ oc set env dc/prod RESPONSE="Hello from Prod"
-       $ oc expose dc/prod --port=8080
-       ```
-    
-    3. サービスを作成します。
-    
-       ```
-       $ oc expose svc/prod
-       ```
-    
-    4. 次に別バージョンのアプリケーションを作成します。
-    
-       ```
-       $ oc run canary --image=openshift/hello-openshift
-       $ oc set env dc/canary RESPONSE="Hello from Canary"
-       $ oc expose dc/canary --port=8080
-       $ oc set route-backends prod prod=100 canary=0
-       ```
-    
-    5. 別のターミナルを開き、トラフィックが片方に寄っていることを確認します。
-    
-       ```
-       $ oc get route prod
-       $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
-       
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       ...
-       ```
-    
-    6. トラフィックの配分を変更します。
-    
-       ```
-       $ oc set route-backends prod prod=90 canary=10
-       ```
-    
-    7. もう一度リクエストを送り、今度はトラフィックが分配されていることを確認します。
-    
-       ```
-       $ oc get route prod
-       $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
-       
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Prod
-       Hello from Canary
-       Hello from Prod
-       Hello from Prod
-       ...
-       ```
-    
-       # Rolling Deployment
-    
-       最後にRolling Deployment を説明していきます。Rolling Deploymentは新しいバージョンのアプリケーションを少しずつ増やし、古いバージョンのアプリケーションを少しずつ減らして入れ替えていく手法です。
-    
-       1. プロジェクトを選択します。
-    
-          ```
-          $ oc login 接続先クラスタ
-          $ oc project ユーザー名 (ex. oc project dev11)
-          ```
-    
-       2. アプリケーションを作成します。
-    
-          ```
-          $ oc run rolling --image=openshift/hello-openshift --replicas=2
-          $ oc expose dc/rolling --port 8080
-          $ oc expose svc/rolling
-          ```
-    
-       3. アプリケーションから返されるレスポンスを設定します。
-    
-          ```
-          $ oc set env dc/rolling RESPONSE="Hello from new roll"
-          ```
-    
-       4. Workloads > Deployment Configs > rolling > Podsを確認します。
-    
-          ![](images/rolling1.png)
-    
-       5. 別のターミナルを開き、レスポンスを確認します。
-    
-          ```
-          $ oc get route rolling
-          $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
-          
-          Hello from new roll
-          Hello from new roll
-          Hello from new roll
-          ...
-          ```
-    
-       6. レスポンスを変更します。
-    
-          ```
-          $ oc set env dc/rolling RESPONSE="Hello from second roll"
-          ```
-    
-       7. 再度レスポンスを確認し、変更されていることを確認します。
-    
-          ```
-          $ oc get route rolling
-          $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
-          
-          Hello from second roll
-          Hello from second roll
-          Hello from second roll
-          ...
-          ```
-    
-       8. Workloads > Deployment Configs > rolling > Podsを再度確認し、Pod名が変わっていることを確認します。
-    
-          ![](images/rolling2.png)
-    
-          
+
+# Canary Deployment
+
+次にCanary Deployment を説明していきます。Canary Deploymentでは異なるバージョンのアプリケーションを二つ作り、トラフィックを少しずつ新しいバージョンへ流して問題無ければそのまま全て切り替える手法です。
+
+1. プロジェクトを選択します。
+
+   ```
+   $ oc login 接続先クラスタ
+   $ oc project ユーザー名 (ex. oc project dev11)
+   ```
+
+2. アプリケーションを作成します。
+
+   ```
+   $ oc run prod --image=openshift/hello-openshift --replicas=2
+   $ oc set env dc/prod RESPONSE="Hello from Prod"
+   $ oc expose dc/prod --port=8080
+   ```
+
+3. サービスを作成します。
+
+   ```
+   $ oc expose svc/prod
+   ```
+
+4. 次に別バージョンのアプリケーションを作成します。
+
+   ```
+   $ oc run canary --image=openshift/hello-openshift
+   $ oc set env dc/canary RESPONSE="Hello from Canary"
+   $ oc expose dc/canary --port=8080
+   $ oc set route-backends prod prod=100 canary=0
+   ```
+
+5. 別のターミナルを開き、トラフィックが片方に寄っていることを確認します。
+
+   ```
+   $ oc get route prod
+   $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+   
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   ...
+   ```
+
+6. トラフィックの配分を変更します。
+
+   ```
+   $ oc set route-backends prod prod=90 canary=10
+   ```
+
+7. もう一度リクエストを送り、今度はトラフィックが分配されていることを確認します。
+
+   ```
+   $ oc get route prod
+   $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+   
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Prod
+   Hello from Canary
+   Hello from Prod
+   Hello from Prod
+   ...
+   ```
+
+# Rolling Deployment
+
+最後にRolling Deployment を説明していきます。Rolling Deploymentは新しいバージョンのアプリケーションを少しずつ増やし、古いバージョンのアプリケーションを少しずつ減らして入れ替えていく手法です。
+
+1. プロジェクトを選択します。
+
+   ```
+   $ oc login 接続先クラスタ
+   $ oc project ユーザー名 (ex. oc project dev11)
+   ```
+
+2. アプリケーションを作成します。
+
+   ```
+   $ oc run rolling --image=openshift/hello-openshift --replicas=2
+   $ oc expose dc/rolling --port 8080
+   $ oc expose svc/rolling
+   ```
+
+3. アプリケーションから返されるレスポンスを設定します。
+
+   ```
+   $ oc set env dc/rolling RESPONSE="Hello from new roll"
+   ```
+
+4. Workloads > Deployment Configs > rolling > Podsを確認します。
+
+   ![](images/rolling1.png)
+
+5. 別のターミナルを開き、レスポンスを確認します。
+
+   ```
+   $ oc get route rolling
+   $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+   
+   Hello from new roll
+   Hello from new roll
+   Hello from new roll
+   ...
+   ```
+
+6. レスポンスを変更します。
+
+   ```
+   $ oc set env dc/rolling RESPONSE="Hello from second roll"
+   ```
+
+7. 再度レスポンスを確認し、変更されていることを確認します。
+
+   ```
+   $ oc get route rolling
+   $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+   
+   Hello from second roll
+   Hello from second roll
+   Hello from second roll
+   ...
+   ```
+
+8. Workloads > Deployment Configs > rolling > Podsを再度確認し、Pod名が変わっていることを確認します。
+
+   ![](images/rolling2.png)
+
+   
