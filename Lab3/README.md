@@ -1,10 +1,11 @@
-Lab3. MongoDBとNode.jsを使ったアプリケーションの作成 では下記の内容を実施します。
+# 後半: 複数コンテナの連携
+
 - テンプレートからMongoDBを構築
 - テンプレートからNode.jsアプリケーションを作成
 - Node.jsアプリケーションのsecretを設定し、MongoDBと繋げる
 
 # MongoDBを構築
-Lab3ではNode.jsアプリケーションを作成し、MongoDBと接続する上で必要な情報を設定し連携させます。まずはMongoDBから構築していきます。
+Node.jsアプリケーションを作成し、MongoDBと接続する上で必要な情報を設定し連携させます。まずはMongoDBから構築していきます。
 
 1. プロジェクトを選択します
 
@@ -18,7 +19,7 @@ Lab3ではNode.jsアプリケーションを作成し、MongoDBと接続する�
     ![](images/mongo1.png)
 
 1. Create Service Instanceをクリックしたら下記のような画面になります。そのままCreateをクリックしてください。
-    
+  
     ![](images/mongo2.png)
 
 1. 「Create Service Binding」を選択します。
@@ -30,7 +31,8 @@ Lab3ではNode.jsアプリケーションを作成し、MongoDBと接続する�
     ![](images/mongo4.png)
     
 1. 下記画面に遷移しますので、「SECRET」の「mongodb-ephemeral」のリンクを選択してください。
-    
+  
+
 (作成されるまで多少時間が掛かります)
     
 ![](images/mongo5.png)

@@ -1,4 +1,5 @@
-Lab4. 様々なデプロイメント手法 では下記を説明します。
+# 後半: 様々なデプロイメント手法
+
 - Blue Green Deployment
 - Canary Deployment
 - Rolling Deployment
