@@ -1,4 +1,4 @@
-# 後半: 複数コンテナの連携
+# Lab3: 複数コンテナの連携
 
 - テンプレートからMongoDBを構築
 - テンプレートからNode.jsアプリケーションを作成
@@ -9,8 +9,8 @@ Node.jsアプリケーションを作成し、MongoDBと接続する上で必要
 
 1. プロジェクトを選択します
 
-    プロジェクトは，**必ずご自身のログイン時のユーザー名 (例: "user01a")** のものを選択してください。
-    Home > Project > user01a (例)
+    プロジェクトは，**必ずご自身のログイン時のユーザー名 (例: "dev01")** のものを選択してください。
+    Home > Project > dev01　 (例)
 
     ![](images/create_application_using_existedImage_1.png)
 

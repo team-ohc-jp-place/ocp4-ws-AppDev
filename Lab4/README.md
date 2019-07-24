@@ -1,44 +1,44 @@
-# 後半: 様々なデプロイメント手法
+# Lab4: 様々なデプロイメント手法
 
 - Blue Green Deployment
 - Canary Deployment
 - Rolling Deployment
 
 # Blue Green Deployment
-最初にBlue Green Deployment から説明していきます。Blue Green Deploymentとは、異なるバージョンのアプリケーションを二つ作り、Load Balancer の向き先を変更することでアプリケーションのバージョンを切り替える手法です。Blueが現行バージョン、Greenが新バージョンです。
+Blue Green Deploymentとは、異なるバージョンのアプリケーションを二つ作り、Load Balancer(OCPの場合はRouterが内部LBとして機能します) の向き先を変更することでアプリケーションのバージョンを切り替える手法です。Blueが現行バージョン、Greenが新バージョンです。
 
 1. プロジェクトを選択します。
 
     ```
-    $ oc login 接続先クラスタ
-    $ oc project ユーザー名 (ex. oc project dev11)
+    $ oc login https://api.cluster-tokyo-ef76.tokyo-ef76.openshiftworkshop.com:6443
+    $ oc project ユーザー名 (ex. oc project dev01)
     ```
 
-1. アプリケーション (Blue) を作成します。
+2. アプリケーション (Blue) を作成します。
 
     ```
     $ oc run blue --image=openshift/hello-openshift --replicas=2
     ```
 
-1. 作成したアプリケーションのレスポンスを設定します。
+3. 作成したアプリケーションのレスポンスを設定します。(このサンプルアプリケーションは環境変数によってレスポンスメッセージが設定可能になっています)
 
     ```
     $ oc set env dc/blue RESPONSE="Hello from Blue"
     ```
 
-1. サービスを作成します。
+4. サービスを作成します。
 
     ```
     $ oc expose dc/blue --port=8080
     ```
 
-1. サービスを外部公開します。
+5. サービスを外部公開します。
 
     ```
     $ oc expose svc/blue --name=bluegreen
     ```
 
-1. 別バージョンのアプリケーション (Green) を作成します。
+6. 別バージョンのアプリケーション (Green) を作成します。
 
     ```
     $ oc run green --image=openshift/hello-openshift --replicas=2
@@ -46,17 +46,17 @@
     $ oc expose dc/green --port=8080
     ```
 
-1. トラフィックをBlueに設定します。
+7. トラフィックをBlueに設定します。
 
     ```
     $ oc set route-backends bluegreen blue=100 green=0
     ```
 
-1. 別のターミナルを開き、今どちらのアプリケーションに向いているのか確認します。
+8. 別のターミナルを開き、今どちらのアプリケーションに向いているのか確認します。
 
     ```
     $ oc get route bluegreen
-    $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+    $ while true; do curl http://<oc get routeで取得したエンドポイント>; sleep .5; done
     
     Hello from Blue
     Hello from Blue
@@ -68,13 +68,13 @@
     ...
     ```
 
-1. 今度はトラフィックをGreenに向けます。
+9. 今度はトラフィックをGreenに向けます。
 
     ```
     $ oc set route-backends bluegreen blue=0 green=100
     ```
 
-1. 再びアクセスすると、別のバージョンに切り替わっていることが確認できます。
+10. 再びアクセスすると、別のバージョンに切り替わっていることが確認できます。
 
     ```
     $ oc get route bluegreen
@@ -91,13 +91,13 @@
 
 # Canary Deployment
 
-次にCanary Deployment を説明していきます。Canary Deploymentでは異なるバージョンのアプリケーションを二つ作り、トラフィックを少しずつ新しいバージョンへ流して問題無ければそのまま全て切り替える手法です。
+Canary Deploymentは異なるバージョンのアプリケーションを二つ作り、トラフィックを少しずつ新しいバージョンへ流して、問題が無ければそのまま全て切り替える手法です。
 
 1. プロジェクトを選択します。
 
    ```
-   $ oc login 接続先クラスタ
-   $ oc project ユーザー名 (ex. oc project dev11)
+    $ oc login https://api.cluster-tokyo-ef76.tokyo-ef76.openshiftworkshop.com:6443
+   $ oc project ユーザー名 (ex. oc project dev01)
    ```
 
 2. アプリケーションを作成します。
@@ -127,7 +127,7 @@
 
    ```
    $ oc get route prod
-   $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+   $ while true; do curl http://<oc get routeで取得したエンドポイント>; sleep .5; done
    
    Hello from Prod
    Hello from Prod
@@ -165,9 +165,9 @@
    ...
    ```
 
-# Rolling Deployment
+# Rolling Update
 
-最後にRolling Deployment を説明していきます。Rolling Deploymentは新しいバージョンのアプリケーションを少しずつ増やし、古いバージョンのアプリケーションを少しずつ減らして入れ替えていく手法です。
+Rolling Updateは新しいバージョンのアプリケーションのPodを少しずつ増やし、古いバージョンのアプリケーションのPodを少しずつ減らして入れ替えていく手法です。
 
 1. プロジェクトを選択します。
 
@@ -198,7 +198,7 @@
 
    ```
    $ oc get route rolling
-   $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+   $ while true; do curl http://<oc get routeで取得したエンドポイント>; sleep .5; done
    
    Hello from new roll
    Hello from new roll
