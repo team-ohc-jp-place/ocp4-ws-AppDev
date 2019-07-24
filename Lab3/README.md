@@ -29,12 +29,14 @@ Node.jsアプリケーションを作成し、MongoDBと接続する上で必要
 1. 「Service Binding Name」が下記のように「mongodb-ephemeral」のようになっているはずなので、そのままCreateを選択してください。
 
     ![](images/mongo4.png)
-    
+
 1. 下記画面に遷移しますので、「SECRET」の「mongodb-ephemeral」のリンクを選択してください。(作成されるまで多少時間が掛かります)
-  
-  ![](images/mongo5.png)
-  
-1. 下にスクロールし、右側の「Reveal Values」を選択し、表示されたユーザー名やパスワード全てをメモしておいてください。後でアプリケーションの設定をする時に必要となります。![](images/mongo6.png)
+
+    ![](images/mongo5.png)
+
+1. 下にスクロールし、右側の「Reveal Values」を選択し、表示されたユーザー名やパスワード全てをメモしておいてください。後でアプリケーションの設定をする時に必要となります。
+
+    ![](images/mongo6.png)
 
 # Node.jsアプリケーションを構築
 
