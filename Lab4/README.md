@@ -17,7 +17,7 @@ Blue Green Deploymentとは、異なるバージョンのアプリケーショ�
 2. アプリケーション (Blue) を作成します。
 
     ```
-    $ oc run blue --image=openshift/hello-openshift --replicas=2
+    $ oc run blue --image=openshift/hello-openshift --replicas=2 --limits='cpu=500m,memory=128Mi'
     ```
 
 3. 作成したアプリケーションのレスポンスを設定します。(このサンプルアプリケーションは環境変数によってレスポンスメッセージが設定可能になっています)
@@ -41,7 +41,7 @@ Blue Green Deploymentとは、異なるバージョンのアプリケーショ�
 6. 別バージョンのアプリケーション (Green) を作成します。
 
     ```
-    $ oc run green --image=openshift/hello-openshift --replicas=2
+    $ oc run green --image=openshift/hello-openshift --replicas=2 --limits='cpu=500m,memory=128Mi'
     $ oc set env dc/green RESPONSE="Hello from Green"
     $ oc expose dc/green --port=8080
     ```
@@ -103,7 +103,7 @@ Canary Deploymentは異なるバージョンのアプリケーションを二つ
 2. アプリケーションを作成します。
 
    ```
-   $ oc run prod --image=openshift/hello-openshift --replicas=2
+   $ oc run prod --image=openshift/hello-openshift --replicas=2 --limits='cpu=500m,memory=128Mi'
    $ oc set env dc/prod RESPONSE="Hello from Prod"
    $ oc expose dc/prod --port=8080
    ```
@@ -117,7 +117,7 @@ Canary Deploymentは異なるバージョンのアプリケーションを二つ
 4. 次に別バージョンのアプリケーションを作成します。
 
    ```
-   $ oc run canary --image=openshift/hello-openshift
+   $ oc run canary --image=openshift/hello-openshift --limits='cpu=500m,memory=128Mi'
    $ oc set env dc/canary RESPONSE="Hello from Canary"
    $ oc expose dc/canary --port=8080
    $ oc set route-backends prod prod=100 canary=0
@@ -179,7 +179,7 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
 2. アプリケーションを作成します。
 
    ```
-   $ oc run rolling --image=openshift/hello-openshift --replicas=2
+   $ oc run rolling --image=openshift/hello-openshift --replicas=2 --limits='cpu=500m,memory=128Mi'
    $ oc expose dc/rolling --port 8080
    $ oc expose svc/rolling
    ```
