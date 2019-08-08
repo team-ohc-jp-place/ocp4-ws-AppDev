@@ -72,17 +72,13 @@ Node.jsアプリケーションを作成し、MongoDBと接続する上で必要
 
    ここで Single values (env) の下にNAME, VALUEと入力できる箇所があるので、以前MongoDB構築時にメモした値を入れていきます。それぞれ下記のように入れていきます。
 
-   NAME → VALUE
-
-   MONGODB_USER → USERNAME
-
-   MONGODB_DATABASE → DATABASE_NAME
-
-   MONGODB_PASSWORD → PASSWORD
-
-   MONGODB_ADMIN_PASSWORD → ADMIN_PASSWORD
-
-   DATABASE_SERVICE_NAME → mongodb
+   | NAME                   | VALUE                            |
+   | ---------------------- | -------------------------------- |
+   | MONGODB_USER           | USERNAMEに表示されていた値       |
+   | MONGODB_DATABASE       | DATABASE_NAMEに表示されていた値  |
+   | MONGODB_PASSWORD       | PASSWORDに表示されていた値       |
+   | MONGODB_ADMIN_PASSWORD | ADMIN_PASSWORDに表示されていた値 |
+   | DATABASE_SERVICE_NAME  | mongodb (固定値)                 |
 
    ![](images/node_mongo1.png)
 

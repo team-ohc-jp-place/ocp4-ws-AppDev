@@ -73,7 +73,11 @@ OpenShift上にCodeReadyをインストールします。
 
    ![](images/app_2.png)
 
-3. 「GITHUB」を選択し、URLに「https://github.com/16yuki0702/sample-quarkus-0.20.0.git」を入力したら、Importしてください。
+3. 「GITHUB」を選択し、下記URLを入力したらImportしてください。
+
+   ```
+   https://github.com/16yuki0702/sample-quarkus-0.20.0.git
+   ```
 
    ![](images/app_3.png)
 
