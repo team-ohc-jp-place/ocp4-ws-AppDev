@@ -6,7 +6,7 @@
 # Jenkins CI/CDパイプライン構築
 Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパイプラインへ組み込み、jenkins上でビルド、デプロイできるようにします。前回のLab5では御自身で様々なコマンドを打ち込みBuild Configを作成したり、アプリケーションを手動で作成したりしていました。ここではjenkins pipelineという仕組みを使って一連の手順を自動化します。
 
-1. CodeReady 上でterminalを開き、Lab5で作成したjenkinsプロジェクトを選択してください。
+1. CodeReady 上でterminalを開き、Lab5で作成したプロジェクトを選択してください。
 
    ex. oc project devXX-app   ![](images/cicd_1.png)
 
