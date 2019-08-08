@@ -14,12 +14,16 @@ Red Hat OpenShift Container Platform 4 ワークショップ
 |17:15-17:30|QA / クロージング / アンケート||
 
 # 諸連絡
-OCPクラスター接続情報など (Etherpad) ==> http://bit.ly/openshift-20190724
+OCPクラスター接続情報など (Etherpad) ==> http://etherpad-etherpad.apps.dev.ocp41.nosue.mobi/p/workshop
 
 # ハンズオン環境および前提
 本ハンズオンは，構築済みのOpenShift(OCP)クラスターを参加者全員で共有して作業を進めます。
 
 OCPクラスターに対するCLI操作を行う際は，CodeReady Workspaceにユーザー登録して頂き、作成した開発環境から行います。GUI操作は，クライアントPCのブラウザ(**Chrome/Firefox推奨**)を使用します。
+
+[Setup Workspace](setup_workspace) をご確認の上、ご自身の開発環境をセットアップしてください。本日のCodeReady WorkspaceのURLは下記になります。
+
+http://codeready-codeready.apps.dev.ocp41.nosue.mobi/
 
 # ハンズオン概要
 本ハンズオンは，OpenShift4(以降，OCPまたはOCP4)の開発編です。
