@@ -74,7 +74,7 @@ GUIで操作することも可能ですが、今回はCLI操作をメインに�
 1. 自身用の新規プロジェクト **devXX-jenkins** を作成します  **(例: dev01-jenkins)**
 
     ```
-    $ oc login https://api.cluster-tokyo-ef76.tokyo-ef76.openshiftworkshop.com:6443
+    $ oc login https://api.dev.ocp41.nosue.mobi:6443
     $ oc new-project dev01-jenkins (<== ご自身のプロジェクト名)
     $ oc project
     Using project "dev01-jenkins" on server XXXXXXX
