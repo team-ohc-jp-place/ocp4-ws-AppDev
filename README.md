@@ -40,7 +40,7 @@ OCPクラスターに対するCLI操作を行う際は，CodeReady Workspaceに�
 - [Lab4: 様々なデプロイメント手法](Lab4)
 
 ### 後半
-- [Lab5: CodeReady Workspaceによる開発とデプロイ](Lab5)
+- [Lab5: CodeReady Workspaceを利用した開発体験](Lab5)
 
 - [Lab6: Jenkinsベースのビルドパイプラインへの組込](Lab6)
 
