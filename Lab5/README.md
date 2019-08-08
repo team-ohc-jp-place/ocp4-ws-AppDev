@@ -1,9 +1,9 @@
-# Lab5: CodeReady
+# Lab5: CodeReady Workspaceを利用した開発体験
 
-- CodeReady On OpenShift
-- サンプルアプリケーションのデプロイ
+- CodeReady Workspaceのインストール
+- サンプルアプリケーションの開発とOpenshiftへのデプロイ
 
-# CodeReady On OpenShift
+# CodeReady Workspaceのインストール
 OpenShift上にCodeReadyをインストールします。
 
 1. プロジェクトを選択します
@@ -61,7 +61,7 @@ OpenShift上にCodeReadyをインストールします。
 
     ![](images/install_12.png)
 
-# サンプルアプリケーションのデプロイ
+# サンプルアプリケーションの開発とOpenshiftへのデプロイ
 
 ここからインストールしたCodeReady上で[Quarkus](https://quarkus.io/)アプリケーションを作成、デプロイしていきます。作業していてworkspaceが重いと感じる場合は、このセクションの一番下にあるtipsを元にworkspaceに割り当てるメモリを増やしてみてください。
 
