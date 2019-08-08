@@ -4,7 +4,7 @@
 - サンプルアプリケーションの開発とOpenshiftへのデプロイ
 
 # CodeReady Workspaceのインストール
-OpenShift上にCodeReadyをインストールします。
+OpenShift上にCodeReadyをインストールします。すでにCodeReady Workspaceがインストール済みで、workspaceも用意済みであれば当セクションは飛ばして構いません。次セクションの「サンプルアプリケーションの開発とOpenshiftへのデプロイ」の 2 まで進んでください。
 
 1. プロジェクトを選択します
 
