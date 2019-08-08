@@ -24,19 +24,25 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
 
     ![](images/jenkins_edit_deploymentconfig_1.png)
 
-4. 下記コマンドを入力し、Build Config を作成します。
+4. Lab5で作成したBuild Config等を削除して作り直していきます。下記でApplicatoinの設定を全て削除します。(Hands-on中にproject内にゴミが溜まってうまく動かなくなった場合も、下記でApplicatoin設定を削除してみてください)
+
+    ```
+    ./openshift/delete-quarkus-app.sh
+    ```
+
+5. 下記コマンドを入力し、Build Config を作成します。
 
     ```
     oc create -f openshift/pipeline.yaml
     ```
 
-5. 作成したBuild Config をstart します。これだけでjenkins上で一連の流れがスタートします。
+6. 作成したBuild Config をstart します。これだけでjenkins上で一連の流れがスタートします。
 
     ```
     oc start-build quarkus-sample-pipeline
     ```
 
-6. jenkinsの画面を開き、pipelineが開始されていることを確認します。
+7. jenkinsの画面を開き、pipelineが開始されていることを確認します。
 
     ```
     $ oc get route
@@ -51,27 +57,27 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
 
     ![](images/jenkins_login_2.png)
 
-    **自身のプロジェクト名** を選択します(例: dev01-jenkins)
+    **自身のプロジェクト名** を選択します(例: dev01-app)
 
     ![](images/jenkins_ui_1.png)
 
-    **プロジェクト名/パイプライン名** を選択します (例: dev01-jenkins/quarkus-sample-pipeline)
+    **プロジェクト名/パイプライン名** を選択します (例: dev01-app/quarkus-sample-pipeline)
 
     ![](images/jenkins_ui_2.png)
 
     時間経過とともにパイプラインのステージがだんだん右側に伸びていくことが確認できます
 
-7. 左下の #1を選択し、次の画面でConsole Outputを選択してください。pipeline実行中のログが確認できます。
+8. 左下の #1を選択し、次の画面でConsole Outputを選択してください。pipeline実行中のログが確認できます。
 
     ![](images/cicd_3.png)
 
-8. 下記のような出力が確認できればpipeline は完了です。前回と同じ手順でquarkusアプリケーションのエンドポイントを確認し、画面が表示されているか確認してください。
+9. 下記のような出力が確認できればpipeline は完了です。前回と同じ手順でquarkusアプリケーションのエンドポイントを確認し、画面が表示されているか確認してください。
 
     ![](images/cicd_4.png)
 
     ![](images/cicd_5.png)
 
-9. 下記のようにデフォルトページが表示されれば完了です。
+10. 下記のようにデフォルトページが表示されれば完了です。
 
     ![](images/cicd_6.png)
 
