@@ -27,13 +27,13 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
 4. Lab5で作成したBuild Config等を削除して作り直していきます。下記でApplicatoinの設定を全て削除します。(Hands-on中にproject内にゴミが溜まってうまく動かなくなった場合も、下記でApplicatoin設定を削除してみてください)
 
     ```
-    ./openshift/delete-quarkus-app.sh
+    ./jenkins/delete-quarkus-app.sh
     ```
 
 5. 下記コマンドを入力し、Build Config を作成します。
 
     ```
-    oc create -f openshift/pipeline.yaml
+    oc create -f jenkins/pipeline.yaml
     ```
 
 6. 作成したBuild Config をstart します。これだけでjenkins上で一連の流れがスタートします。
@@ -83,7 +83,7 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
 
 # 応用問題
 
-1. openshift/pipeline.yaml 開き、各stageが定義されていることを確認してください。ここに任意の箇所で下記stageを追加してください。
+1. jenkins/pipeline.yaml 開き、各stageが定義されていることを確認してください。ここに任意の箇所で下記stageを追加してください。
 
    ```
    stage('Test Stage') {
@@ -102,7 +102,7 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
    編集したら下記で変更したpipelineを適用します。その後再度jenkins上で「Build Now」を選択してpipelineを開始し、出力がどのように変化するか確認してください。
 
    ```
-   oc apply -f openshift/pipeline.yaml
+   oc apply -f jenkins/pipeline.yaml
    ```
 
 2. importしたgithubプロジェクトの 「src/main/java/org/acme/quickstart/GreetingResource.java」の出力を変更、pushした後jenkins上で再度「Build Now」を実行してください。pipeline完了後、/hello エンドポイントの出力が変わっているか確認してください。
