@@ -1,30 +1,6 @@
 # Lab7: Tektonを使ったパイプラインの構築
 
--  インストール
 - TektonでCI/CD構築
-
-# Tekton インストール
-
-Lab5で作成したQuarkusプロジェクトをTektonベースのビルドパイプラインへ組み込み、Tekton上でビルド、デプロイできるようにします。Tektonはkubernetes nativeなパイプラインツールで、現在盛んに開発が進められています。
-
-1. 下記でTekton Pipelineをインストールします。
-
-   ```
-   oc new-project tekton-pipelines
-   oc adm policy add-scc-to-user anyuid -z tekton-pipelines-controller
-   oc apply --filename https://storage.googleapis.com/tekton-releases/latest/release.yaml
-   oc get pods --namespace tekton-pipelines --watch
-   ```
-
-2. 続けて下記でTekton dashboardをインストールします。
-
-   ```
-   oc apply -n tekton-pipelines --filename https://github.com/tektoncd/dashboard/releases/download/v0.1.0/openshift-tekton-dashboard.yaml
-   ```
-
-3. Routeを確認し、ログイン画面が表示されたらOpenshift と同じユーザー情報を入力してログインできればインストール完了です。
-
-   ![](images/install_1.png)
 
 # TektonでCI/CD構築
 
