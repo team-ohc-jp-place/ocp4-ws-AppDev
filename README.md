@@ -14,7 +14,7 @@ Red Hat OpenShift Container Platform 4 ワークショップ
 |17:00-17:15|QA / クロージング / アンケート||
 
 # 諸連絡
-OCPクラスター接続情報など (Etherpad) ==> http://bit.ly/openshift-20190809
+OCPクラスター接続情報など (Etherpad) ==> http://etherpad-etherpad.apps.dev.ocp41.nosue.mobi/p/workshop-20190903
 
 # ハンズオン環境および前提
 本ハンズオンは，構築済みのOpenShift(OCP)クラスターを参加者全員で共有して作業を進めます。
@@ -36,6 +36,7 @@ http://codeready-codeready.apps.dev.ocp41.nosue.mobi/
 - 様々なデプロイメント手法(Blue/Green、カナリアリリースなど)
 - CodeReady Workspaceによる開発とデプロイ
 - Jenkinsベースのビルドパイプラインへの組込
+- Tektonを使ったパイプラインの構築
 
 ### 前半 
 - [Lab1: コンテナイメージのビルド&デプロイ](Lab1)
