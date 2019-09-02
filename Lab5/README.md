@@ -6,7 +6,7 @@
 
 ここからインストールしたCodeReady上で[Quarkus](https://quarkus.io/)アプリケーションを作成、デプロイしていきます。作業していてworkspaceが重いと感じる場合は、このセクションの一番下にあるtipsを元にworkspaceに割り当てるメモリを増やしてみてください。
 
-1. Dashboard を選択し、下記画面を開いたらJava1.8を選択して 「CREATE & OPEN」を選択してください。WorkSpaceの作成が始まります。時間がかかるのでしばらくお待ちください。
+1. (既にWorkSpace作成済みの場合はこちらは飛ばしてください) Dashboard を選択し、下記画面を開いたらJava1.8を選択して 「CREATE & OPEN」を選択してください。WorkSpaceの作成が始まります。時間がかかるのでしばらくお待ちください。
 
    ![](images/app_1.png)
    

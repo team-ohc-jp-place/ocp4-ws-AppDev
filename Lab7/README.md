@@ -4,6 +4,13 @@
 
 # TektonでCI/CD構築
 
+Tektonを使ってパイプラインを構築していきます。  
+Tektonはkubernetes nativeなパイプラインツールで現在盛んに開発が進められています。  
+https://github.com/tektoncd  
+尚、dashboardを用意してGUIでパイプラインのステータスが確認できるようにもなっています。  
+今回のハンズオンでは下記のURLでdashboardを用意してあります。
+[https://tekton-dashboard-tekton-pipelines.apps.dev.ocp41.nosue.mobi](https://tekton-dashboard-tekton-pipelines.apps.dev.ocp41.nosue.mobi/)
+
 1. Lab5でimportしたprojectにtektonというディレクトリがあるので移動してください。
 
    ```
@@ -13,12 +20,11 @@
 2. pipelineで必要な設定をするために、下記でセットアップを行います。ユーザー名の箇所には御自身のユーザー名を入力してください。 ex. dev01
 
    ```
-   sed -i -e 's/pipeline-test/ユーザー名-pipeline/g' setup.sh
    sed -i -e 's/pipeline-test/ユーザー名-pipeline/g' application.yaml
    sed -i -e 's/pipeline-test/ユーザー名-pipeline/g' pipeline-resources.yaml
-   ./setup.sh
+   oc project ユーザー名-pipeline
    ```
-
+   
 3. 続けて下記でpipelineをスタートします。
 
    ```
@@ -62,7 +68,7 @@ https://github.com/tektoncd/cli
 1. 下記コマンドを打ってpipelineを詳細を確認してみてください。出力がサンプルの用に表示されるか確認してみてください。
 
    ```
-   $tkn pipeline describe sample-pipeline
+   tkn pipeline describe sample-pipeline
     
    Name:   sample-pipeline
    

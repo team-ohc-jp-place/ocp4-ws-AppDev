@@ -23,7 +23,7 @@ OCPクラスターに対するCLI操作を行う際は，CodeReady Workspaceに�
 
 [Setup Workspace](setup_workspace) をご確認の上、ご自身の開発環境をセットアップしてください。本日のCodeReady WorkspaceのURLは下記になります。
 
-http://codeready-codeready.apps.dev.ocp41.nosue.mobi/
+http://codeready-codeready.apps.dev.ocp41.nosue.mobi
 
 # ハンズオン概要
 本ハンズオンは，OpenShift4(以降，OCPまたはOCP4)の開発編です。

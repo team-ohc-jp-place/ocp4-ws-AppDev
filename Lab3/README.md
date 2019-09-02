@@ -46,9 +46,9 @@ Node.jsアプリケーションを作成し、MongoDBと接続する上で必要
 
    ![](images/node1.png)
 
-2. Create Applicationを選択したら、下記のように Nameは「ユーザー名-multi-pod-app」、Git Repositoryには
-
-   「https://github.com/openshift/nodejs-ex.git」を入れ、Createを選択してください。
+2. Create Applicationを選択したら、下記のように Nameは「ユーザー名-multi-pod-app」、Git Repositoryには  
+   https://github.com/openshift/nodejs-ex.git  
+   を入れ、Createを選択してください。
 
    ![](images/node2.png)
 
