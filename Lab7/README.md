@@ -31,7 +31,7 @@ https://github.com/tektoncd
    ./start-pipeline.sh
    ```
 
-4. dashboardでpipelineの状況を確認する為にTektonのURLをブラウザバーに入力します。表示したら「Log in with OpenShift」を選択します。
+4. dashboardでpipelineの状況を確認する為にdashboardのURLをブラウザバーに入力します。表示したら「Log in with OpenShift」を選択します。
 
    ![](images/tekton_1.png)
 
