@@ -105,4 +105,9 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
    oc apply -f jenkins/pipeline.yaml
    ```
 
-2. importしたgithubプロジェクトの 「src/main/java/org/acme/quickstart/GreetingResource.java」の出力を変更、pushした後jenkins上で再度「Build Now」を実行してください。pipeline完了後、/hello エンドポイントの出力が変わっているか確認してください。
+2. importしたgithubプロジェクトの 「src/main/java/org/acme/quickstart/GreetingResource.java」の出力を変更、pushした後jenkins上で再度「Build Now」を実行してください。pipeline完了後、/hello エンドポイントの出力が変わっているか確認してください。  
+   下記2パターンでリポジトリの内容を変更できます。好きな方をお選びください。    
+   1. リポジトリをforkし、forkしたリポジトリの内容を変更、push。(jenkins/pipeline.yamlのリポジトリ指定の変更も忘れずに)  
+   2. 講師がリポジトリの内容を変更してpush。
+
+   ![](images/cicd_5.png)
