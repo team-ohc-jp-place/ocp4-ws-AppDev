@@ -14,7 +14,7 @@ Red Hat OpenShift Container Platform 4 ワークショップ
 |17:00-17:15|QA / クロージング / アンケート||
 
 # 諸連絡
-OCPクラスター接続情報など (Etherpad) ==> http://etherpad-etherpad.apps.dev.ocp41.nosue.mobi/p/workshop-20190903
+OCPクラスター接続情報など (Etherpad) ==> http://bit.ly/openshift-20190903
 
 # ハンズオン環境および前提
 本ハンズオンは，構築済みのOpenShift(OCP)クラスターを参加者全員で共有して作業を進めます。
