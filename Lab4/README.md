@@ -195,11 +195,15 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
    $ oc set env dc/rolling RESPONSE="Hello from new roll"
    ```
 
-4. Workloads > Deployment Configs > rolling > Podsを確認します。
+4. Advanced > Projects > 自身のProject名 > Workloadsタブ > Rolling の横の #数字 を選択します。
 
    ![](images/rolling1.png)
 
-5. 別のターミナルを開き、レスポンスを確認します。
+5. Podsタブを選択するとPod名が確認できます。
+
+   ![](images/rolling2.png)
+   
+6. 別のターミナルを開き、レスポンスを確認します。
 
    ```
    $ oc get route rolling
@@ -211,13 +215,13 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
    ...
    ```
 
-6. レスポンスを変更します。
+7. レスポンスを変更します。
 
    ```
    $ oc set env dc/rolling RESPONSE="Hello from second roll"
    ```
 
-7. 再度レスポンスを確認し、変更されていることを確認します。
+8. 再度レスポンスを確認し、変更されていることを確認します。
 
    ```
    $ oc get route rolling
@@ -229,8 +233,8 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
    ...
    ```
 
-8. Workloads > Deployment Configs > rolling > Podsを再度確認し、Pod名が変わっていることを確認します。
+9. Advanced > Projects > 自身のProject名 > Workloadsタブ > Rolling の横の #数字 を再度選択します。Pod名が変わっていることを確認します。(#数字 はDeployの世代番号を表しています)
 
-   ![](images/rolling2.png)
+   ![](images/rolling3.png)
 
    
