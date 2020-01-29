@@ -65,7 +65,7 @@ https://github.com/tektoncd
 
 https://github.com/tektoncd/cli 
 
-1. 下記コマンドを打ってpipelineを詳細を確認してみてください。出力がサンプルの用に表示されるか確認してみてください。
+1. 下記コマンドを打ってpipelineの詳細を確認してみてください。出力がサンプルの様に表示されるか確認してみてください。
 
    ```
    tkn pipeline describe sample-pipeline
@@ -87,7 +87,7 @@ https://github.com/tektoncd/cli
    sample-pipeline-run   33 minutes ago   7 minutes   Succeeded
    ```
 
-2. tknを使って最後に実行したpipelineの設定で、再度流し直すことができます。下記で再実行し、pipelineの状態を確認してください。下記画像のように新しくpipelinerunが作成されていたら成功です。
+2. tknを使うと、最後に実行した設定でpipelineを再度流し直すことができます。下記で再実行し、pipelineの状態を確認してください。下記画像のように新しくpipelinerunが作成されていたら成功です。
 
    ```
    tkn pipeline start sample-pipeline -l
