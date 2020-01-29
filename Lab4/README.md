@@ -11,7 +11,7 @@ Blue Green Deploymentとは、異なるバージョンのアプリケーショ�
 
     ```
     $ oc login https://api.dev.ocp41.nosue.mobi:6443
-    $ oc project ユーザー名 (ex. oc project dev01)
+    $ oc project ユーザー名 (ex. oc project user01)
     ```
 
 2. アプリケーション (Blue) を作成します。
@@ -102,7 +102,7 @@ Canary Deploymentは異なるバージョンのアプリケーションを二つ
 
    ```
    $ oc login https://api.dev.ocp41.nosue.mobi:6443
-   $ oc project ユーザー名 (ex. oc project dev01)
+   $ oc project ユーザー名 (ex. oc project user01)
    ```
 
 2. アプリケーションを作成します。
@@ -178,7 +178,7 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
 
    ```
    $ oc login https://api.dev.ocp41.nosue.mobi:6443
-   $ oc project ユーザー名 (ex. oc project dev11)
+   $ oc project ユーザー名 (ex. oc project user01)
    ```
 
 2. アプリケーションを作成します。

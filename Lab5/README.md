@@ -34,7 +34,7 @@ CodeReady上で[Quarkus](https://quarkus.io/)アプリケーションを作成�
    oc new-project ユーザー名-app
    ```
 
-   ex. oc new-project dev11-app
+   ex. oc new-project user01-app
 
    
 

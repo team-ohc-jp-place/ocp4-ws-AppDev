@@ -6,7 +6,7 @@ Hands-on 作業用にocクライアントが入った開発環境を用意しま
 
    ![](images/setup_1.png)
    
-12. 御自身のユーザー名 (ex. dev01) を入力してRegisterを選択してください。Email, Password等は任意です。
+12. 御自身のユーザー名 (ex. user01) を入力してRegisterを選択してください。Email, Password等は任意です。
 
     ![](images/setup_2.png)
 

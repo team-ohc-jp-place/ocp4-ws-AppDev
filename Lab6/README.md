@@ -8,7 +8,7 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
 
 1. CodeReady 上で Terminalを開き、Lab5で作成したプロジェクトを選択してください。
 
-   (ex. oc project devXX-app)
+   (ex. oc project user01-app)
 
    また、カレントディレクトリが「/projects/sample-quarkus-0.20.0」であることも確認してください。
 
@@ -18,7 +18,7 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
     oc new-app jenkins-ephemeral
     ```
 
-3. Jenkinsのメモリ上限を増やします。openshiftコンソールから Advanced > Projects > devxx-app > Workloadsタブ > jenkinsの行 を選び、右上の「Actions」から「Edit Deployment Config」を選択してください。
+3. Jenkinsのメモリ上限を増やします。openshiftコンソールから Advanced > Projects > user01-app > Workloadsタブ > jenkinsの行 を選び、右上の「Actions」から「Edit Deployment Config」を選択してください。
 
     ![](images/jenkins_edit_deploymentconfig_1.png)
 
@@ -55,15 +55,15 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
 
     ![](images/jenkins_login_1.png)
 
-    users.htpasswdを選択し，その後ログイン情報を入力します(例: dev01/openshift)
+    users.htpasswdを選択し，その後ログイン情報を入力します(例: user01/openshift)
 
     ![](images/jenkins_login_2.png)
 
-    **自身のプロジェクト名** を選択します(例: dev01-app)
+    **自身のプロジェクト名** を選択します(例: user01-app)
 
     ![](images/jenkins_ui_1.png)
 
-    **プロジェクト名/パイプライン名** を選択します (例: dev01-app/quarkus-sample-pipeline)
+    **プロジェクト名/パイプライン名** を選択します (例: user01-app/quarkus-sample-pipeline)
 
     ![](images/jenkins_ui_2.png)
 

@@ -17,7 +17,7 @@ https://github.com/tektoncd
    cd tekton
    ```
    
-2. pipelineで必要な設定をするために、下記でセットアップを行います。ユーザー名の箇所には御自身のユーザー名を入力してください。 ex. dev01
+2. pipelineで必要な設定をするために、下記でセットアップを行います。ユーザー名の箇所には御自身のユーザー名を入力してください。 ex. user01
 
    ```
    sed -i -e 's/pipeline-test/ユーザー名-pipeline/g' application.yaml

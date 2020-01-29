@@ -8,8 +8,8 @@
 
 1. プロジェクトを選択します
 
-    プロジェクトは，**必ずご自身のログイン時のユーザー名 (例: "dev01")** のものを選択してください。    
-    Home > Project > dev01 (例)
+    プロジェクトは，**必ずご自身のログイン時のユーザー名 (例: "user01")** のものを選択してください。    
+    Home > Project > user01 (例)
     
     ![](images/create_application_using_existedImage_1.png)
 
@@ -18,7 +18,7 @@
     ![](images/create_application_using_existedImage_2.png)
 
 3. **Namespace**(プロジェクト名)，と**Image Name** を指定します
-    - Namespace: `各自の作成済プロジェクト(例: dev01)`
+    - Namespace: `各自の作成済プロジェクト(例: user01)`
     - Image Name: `quay.io/openshiftlabs/workshop-terminal:2.4.0`
 
     ![](images/create_application_using_existedImage_3.png)
@@ -37,7 +37,7 @@
     ![](images/create_route_for_existedImage.png)
 
 6. Location欄にあるリンクを開きます
-    例: `http://workshop-terminal-dev01.apps.cluster-tokyo-ef76.tokyo-ef76.openshiftworkshop.com/`
+    例: `http://workshop-terminal-user01.apps.cluster-tokyo-ef76.tokyo-ef76.openshiftworkshop.com/`
 
     ![](images/create_route_for_existedImage_result.png)
 
@@ -71,13 +71,13 @@ CI(継続的インテグレーション)ツールとして有名なJenkinsを使
 
 GUIで操作することも可能ですが、今回はCLI操作をメインにして進めてみましょう。
 
-1. 自身用の新規プロジェクト **devXX-jenkins** を作成します  **(例: dev01-jenkins)**
+1. 自身用の新規プロジェクト **user01-jenkins** を作成します  **(例: user01-jenkins)**
 
     ```
     $ oc login https://api.dev.ocp41.nosue.mobi:6443
-    $ oc new-project dev01-jenkins (<== ご自身のプロジェクト名)
+    $ oc new-project user01-jenkins (<== ご自身のプロジェクト名)
     $ oc project
-    Using project "dev01-jenkins" on server XXXXXXX
+    Using project "user01-jenkins" on server XXXXXXX
     
     上記のように出力確認できればOKです
     ```
@@ -129,15 +129,15 @@ GUIで操作することも可能ですが、今回はCLI操作をメインに�
     
     ![](images/jenkins_login_1.png)
     
-    users.htpasswdを選択し，その後ログイン情報を入力します(例: dev01/openshift)
+    users.htpasswdを選択し，その後ログイン情報を入力します(例: user01/openshift)
     
     ![](images/jenkins_login_2.png)
     
-    **自身のプロジェクト名** を選択します(例: dev01-jenkins)
+    **自身のプロジェクト名** を選択します(例: user01-jenkins)
     
     ![](images/jenkins_ui_1.png)
 
-    **プロジェクト名/パイプライン名** を選択します (例: dev01-jenkins/nodejs-sample-pipeline)
+    **プロジェクト名/パイプライン名** を選択します (例: user01-jenkins/nodejs-sample-pipeline)
     
     ![](images/jenkins_ui_2.png)
 

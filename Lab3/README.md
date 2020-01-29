@@ -9,8 +9,8 @@ Node.jsアプリケーションを作成し、MongoDBと接続する上で必要
 
 1. プロジェクトを選択します
 
-    プロジェクトは，**必ずご自身のログイン時のユーザー名 (例: "dev01")** のものを選択してください。
-    Home > Project > dev01　 (例)
+    プロジェクトは，**必ずご自身のログイン時のユーザー名 (例: "user01")** のものを選択してください。
+    Home > Project > user01　 (例)
 
     ![](images/create_application_using_existedImage_1.png)
 
