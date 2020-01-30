@@ -25,7 +25,7 @@ CodeReady上で[Quarkus](https://quarkus.io/)アプリケーションを作成�
 4. CodeReady上からOpenshift にログインします。下記コマンドを打ち、それぞれに割り当てられたユーザー名とパスワードを入力してください。
 
    ```
-   oc login https://api.dev.ocp41.nosue.mobi:6443
+   oc login https://api.xxx:6443
    ```
 
 5. ログインしたら下記コマンドで自分専用のproject を作成してください。他とproject名が重複するとエラーになりますので、打ち間違いがないか確認してください。

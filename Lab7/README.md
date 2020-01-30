@@ -7,9 +7,7 @@
 Tektonを使ってパイプラインを構築していきます。  
 Tektonはkubernetes nativeなパイプラインツールで現在盛んに開発が進められています。  
 https://github.com/tektoncd  
-尚、dashboardを用意してGUIでパイプラインのステータスが確認できるようにもなっています。  
-今回のハンズオンでは下記のURLでdashboardを用意してあります。
-[https://tekton-dashboard-tekton-pipelines.apps.dev.ocp41.nosue.mobi](https://tekton-dashboard-tekton-pipelines.apps.dev.ocp41.nosue.mobi/)
+また、dashboardが用意されておりGUIでパイプラインのステータスが確認できるようにもなっています。  
 
 1. Lab5でimportしたprojectにtektonというディレクトリがあるので移動してください。
 
