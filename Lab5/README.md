@@ -36,7 +36,13 @@ CodeReady上で[Quarkus](https://quarkus.io/)アプリケーションを作成�
 
    ex. oc new-project user01-app
 
-   
+   プロジェクトがすでに作成済みの場合は、下記でプロジェクトを選択してください。
+
+   ```
+   oc project ユーザー名-app
+   ```
+
+   ex. oc project user01-app
 
 6. プロジェクトを作成したら下記を入力し、正しいprojectにいるか確認してください。
 

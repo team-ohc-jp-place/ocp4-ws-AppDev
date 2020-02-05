@@ -8,8 +8,8 @@ Red Hat OpenShift Container Platform 4 ワークショップ
 |13:10-13:30|<講義> ハンズオン前半について|PodとConfigMapとSecret <br/>様々なデプロイメント手法<br/>CodeReady WorkSpace<br/>Quarkus|
 |13:30-15:00|<ハンズオン> 前半|Lab3. 複数コンテナの連携 <br/>Lab4. 様々なデプロイメント手法<br/>Lab5. CodeReady WorkSpace|
 |15:00-15:15|Break||
-|15:15-16:00|<講義> ハンズオン後半|Jenkins <br>Tekton|
-|16:00-17:00|<ハンズオン> 後半 <br>|Lab5. CodeReady WorkSpaceを利用した開発体験 <br>Lab6. Jenkinsベースのビルドパイプラインへの組み込み <br>Lab7. Tektonを使ったパイプラインの構築|
+|15:15-16:00|<講義> ハンズオン後半|Jenkins <br>Tekton<br/>Service Mesh|
+|16:00-17:00|<ハンズオン> 後半 <br>|Lab6. Jenkinsベースのビルドパイプラインへの組み込み <br>Lab7. Tektonを使ったパイプラインの構築<br/>Lab8. Service Meshを使ったアプリケーションの開発|
 |17:00-17:15|QA / クロージング / アンケート||
 
 # 諸連絡
@@ -33,6 +33,7 @@ CodeReady Workspaceを使用する場合は [Setup Workspace](setup_workspace) �
 - CodeReady Workspaceによる開発とデプロイ
 - Jenkinsベースのビルドパイプラインへの組込
 - Tektonを使ったパイプラインの構築
+- Service Meshを使ったアプリケーションの開発
 
 ### 前半 
 - [Lab3: 複数コンテナの連携](Lab3)
@@ -42,3 +43,4 @@ CodeReady Workspaceを使用する場合は [Setup Workspace](setup_workspace) �
 ### 後半
 - [Lab6: Jenkinsベースのビルドパイプラインへの組込](Lab6)
 - [Lab7: Tektonを使ったパイプラインの構築](Lab7)
+- [Lab8: Service Meshを使ったアプリケーションの開発](Lab8)
