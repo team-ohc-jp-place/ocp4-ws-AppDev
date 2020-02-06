@@ -14,10 +14,9 @@ CodeReadyを使用している場合はCodeReadyのTerminal、踏み台サーバ
 oc login https://api.xxx:6443
 ```
 
-1. homeディレクトリに移動し、プロジェクトをcloneしてください。
+1. homeディレクトリに移動し (CodeReady Workspaceで作業する場合は「/projects」配下) プロジェクトをcloneしてください。
 
   ```
-  cd
   git clone https://github.com/16yuki0702/tracing-app.git
   ```
 
