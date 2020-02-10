@@ -4,13 +4,18 @@
 - 応用問題
 
 # Jenkins CI/CDパイプライン構築
-Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパイプラインへ組み込み、jenkins上でビルド、デプロイできるようにします。前回のLab5では御自身で様々なコマンドを打ち込みBuild Configを作成したり、アプリケーションを手動で作成したりしていました。ここではjenkins pipelineという仕組みを使って一連の手順を自動化します。
+Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパイプラインへ組み込み、jenkins上でビルド、デプロイできるようにします。前回のLab5では御自身で様々なコマンドを打ち込みBuild Configを作成したり、アプリケーションを手動で作成したりしていました。ここではjenkins pipelineという仕組みを使って一連の手順を自動化します。CodeReady Workspaceを引き続き使用している場合は、作業ディレクトリが 「/projects/sample-quarkus-0.20.0」であることを確認してください。踏み台サーバーの場合は「/home/userxx/sample-quarkus-0.20.0」となります。  
+尚、当Labから作業を開始することも可能です。その場合は下記でサンプルのプロジェクトをクローンしてください。
 
-1. CodeReady 上で Terminalを開き、Lab5で作成したプロジェクトを選択してください。
+```
+git clone https://github.com/16yuki0702/sample-quarkus-0.20.0.git
+```
+
+1. CodeReady 上、または踏み台サーバー上で Terminalを開き、ご自身のプロジェクト (userxx-app) を選択してください。
 
    (ex. oc project user01-app)
 
-   また、カレントディレクトリが「/projects/sample-quarkus-0.20.0」であることも確認してください。
+   
 
 2. jenkinsを自身のprojectにインストールします。
 
@@ -26,7 +31,7 @@ Lab5で作成したQuarkusプロジェクトをjenkinsベースのビルドパ�
 
     ![](images/jenkins_edit_deploymentconfig_2.png)
 
-5. Lab5で作成したBuild Config等を削除して作り直していきます。下記でApplicatoinの設定を全て削除します。(Hands-on中にproject内にゴミが溜まってうまく動かなくなった場合も、下記でApplicatoin設定を削除してみてください)
+5. Lab5で既にビルドを作成していた場合、作成したBuild Config等を削除して作り直していきます。下記でApplicatoinの設定を全て削除します。(Hands-on中にproject内にゴミが溜まってうまく動かなくなった場合も、下記でApplicatoin設定を削除してみてください)
 
     ```
     ./jenkins/delete-quarkus-app.sh

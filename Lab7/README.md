@@ -8,6 +8,12 @@ Tektonを使ってパイプラインを構築していきます。
 Tektonはkubernetes nativeなパイプラインツールで現在盛んに開発が進められています。  
 https://github.com/tektoncd  
 また、dashboardが用意されておりGUIでパイプラインのステータスが確認できるようにもなっています。  
+CodeReady Workspaceを引き続き使用している場合は、作業ディレクトリが 「/projects/sample-quarkus-0.20.0」であることを確認してください。踏み台サーバーの場合は「/home/userxx/sample-quarkus-0.20.0」となります。  
+尚、当Labから作業を開始することも可能です。その場合は下記でサンプルのプロジェクトをクローンしてください。
+
+```
+git clone https://github.com/16yuki0702/sample-quarkus-0.20.0.git
+```
 
 1. Lab5でimportしたprojectにtektonというディレクトリがあるので移動してください。
 

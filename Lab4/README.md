@@ -17,7 +17,7 @@ Blue Green Deploymentとは、異なるバージョンのアプリケーショ�
 2. アプリケーション (Blue) を作成します。
 
     ```
-    $ oc run blue --image=openshift/hello-openshift --replicas=2 --limits='cpu=500m,memory=128Mi'
+    $ oc run blue --image=openshift/hello-openshift --replicas=2 --limits='cpu=200m,memory=128Mi'
     ```
 
 3. 作成したアプリケーションのレスポンスを設定します。(このサンプルアプリケーションは環境変数によってレスポンスメッセージが設定可能になっています)
@@ -41,7 +41,7 @@ Blue Green Deploymentとは、異なるバージョンのアプリケーショ�
 6. 別バージョンのアプリケーション (Green) を作成します。
 
     ```
-    $ oc run green --image=openshift/hello-openshift --replicas=2 --limits='cpu=500m,memory=128Mi'
+    $ oc run green --image=openshift/hello-openshift --replicas=2 --limits='cpu=200m,memory=128Mi'
     $ oc set env dc/green RESPONSE="Hello from Green"
     $ oc expose dc/green --port=8080
     ```
@@ -55,8 +55,8 @@ Blue Green Deploymentとは、異なるバージョンのアプリケーショ�
 8. 別のターミナルを開き、今どちらのアプリケーションに向いているのか確認します。
 
     ```
-    $ oc get route bluegreen
-    $ while true; do curl http://<oc get routeで取得したエンドポイント>; sleep .5; done
+    $ ENDPOINT=`oc get route bluegreen --template='{{ .spec.host }}'`
+    $ while true; do curl http://$ENDPOINT; sleep .5; done
     
     Hello from Blue
     Hello from Blue
@@ -82,8 +82,8 @@ Blue Green Deploymentとは、異なるバージョンのアプリケーショ�
 10. 再びアクセスすると、別のバージョンに切り替わっていることが確認できます。
 
     ```
-    $ oc get route bluegreen
-    $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+    $ ENDPOINT=`oc get route bluegreen --template='{{ .spec.host }}'`
+    $ while true; do curl http://$ENDPOINT; sleep .5; done
     
     Hello from Green
     Hello from Green
@@ -108,7 +108,7 @@ Canary Deploymentは異なるバージョンのアプリケーションを二つ
 2. アプリケーションを作成します。
 
    ```
-   $ oc run prod --image=openshift/hello-openshift --replicas=2 --limits='cpu=500m,memory=128Mi'
+   $ oc run prod --image=openshift/hello-openshift --replicas=2 --limits='cpu=200m,memory=128Mi'
    $ oc set env dc/prod RESPONSE="Hello from Prod"
    $ oc expose dc/prod --port=8080
    ```
@@ -122,7 +122,7 @@ Canary Deploymentは異なるバージョンのアプリケーションを二つ
 4. 次に別バージョンのアプリケーションを作成します。
 
    ```
-   $ oc run canary --image=openshift/hello-openshift --limits='cpu=500m,memory=128Mi'
+   $ oc run canary --image=openshift/hello-openshift --limits='cpu=200m,memory=128Mi'
    $ oc set env dc/canary RESPONSE="Hello from Canary"
    $ oc expose dc/canary --port=8080
    $ oc set route-backends prod prod=100 canary=0
@@ -131,8 +131,8 @@ Canary Deploymentは異なるバージョンのアプリケーションを二つ
 5. 別のターミナルを開き、トラフィックが片方に寄っていることを確認します。
 
    ```
-   $ oc get route prod
-   $ while true; do curl http://<oc get routeで取得したエンドポイント>; sleep .5; done
+   $ ENDPOINT=`oc get route prod --template='{{ .spec.host }}'`
+   $ while true; do curl http://$ENDPOINT; sleep .5; done
    
    Hello from Prod
    Hello from Prod
@@ -151,8 +151,8 @@ Canary Deploymentは異なるバージョンのアプリケーションを二つ
 7. もう一度リクエストを送り、今度はトラフィックが分配されていることを確認します。
 
    ```
-   $ oc get route prod
-   $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+   $ ENDPOINT=`oc get route prod --template='{{ .spec.host }}'`
+   $ while true; do curl http://$ENDPOINT; sleep .5; done
    
    Hello from Prod
    Hello from Prod
@@ -184,7 +184,7 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
 2. アプリケーションを作成します。
 
    ```
-   $ oc run rolling --image=openshift/hello-openshift --replicas=2 --limits='cpu=500m,memory=128Mi'
+   $ oc run rolling --image=openshift/hello-openshift --replicas=2 --limits='cpu=200m,memory=128Mi'
    $ oc expose dc/rolling --port 8080
    $ oc expose svc/rolling
    ```
@@ -206,8 +206,8 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
 6. 別のターミナルを開き、レスポンスを確認します。
 
    ```
-   $ oc get route rolling
-   $ while true; do curl http://<oc get routeで取得したエンドポイント>; sleep .5; done
+   $ ENDPOINT=`oc get route rolling --template='{{ .spec.host }}'`
+   $ while true; do curl http://$ENDPOINT; sleep .5; done
    
    Hello from new roll
    Hello from new roll
@@ -224,8 +224,8 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
 8. 再度レスポンスを確認し、変更されていることを確認します。
 
    ```
-   $ oc get route rolling
-   $ while true; do curl http://oc get routeで取得したエンドポイント; sleep .5; done
+   $ ENDPOINT=`oc get route rolling --template='{{ .spec.host }}'`
+   $ while true; do curl http://$ENDPOINT; sleep .5; done
    
    Hello from second roll
    Hello from second roll
