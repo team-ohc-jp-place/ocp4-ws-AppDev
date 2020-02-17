@@ -2,6 +2,7 @@
 
 - Service Mesh上にアプリケーションを構築
 - Service Meshを使ったfault injection
+- Service Meshを使ったCanary Deployment
 
 # Service Mesh上にアプリケーションを構築
 
@@ -54,45 +55,27 @@ oc login https://api.xxx:6443
 
 # Service Meshを使ったfault injection
 
-1. 下記yamlファイルを作り(ユーザー名の箇所はご自身のものに変更してください)、oc apply -f yaml で変更を適用してください。
+1. 下記でfault injectionの設定をapplyします。
 
    ```
-   oc apply -f - <<EOF
-   apiVersion: networking.istio.io/v1alpha3
-   kind: VirtualService
-   metadata:
-     name: ユーザー名-gateway
-     namespace: ユーザー名-tracing
-   spec:
-     hosts:
-     - "*"
-     gateways:
-     - ユーザー名-gateway
-     http:
-     - match:
-       - uri:
-           exact: /
-       - uri:
-           exact: /propagate1
-       - uri:
-           exact: /propagate2
-       - uri:
-           exact: /propagate3
-       route:
-       - destination:
-           host: ユーザー名-gateway
-           port:
-             number: 8080
-       fault:
-         abort:
-           httpStatus: 503
-           percent: 50
-   EOF
+   oc apply -f dest3/fault-injection.yaml
    ```
-
+   
 2. ダッシュボードを確認し、リクエストが失敗する時としない時があることを確認してください。
 
    ![](images/ossm_2.png)
+
+# Service Meshを使ったCanary Deployment
+
+1. 下記でCanary Deploymentの設定をapplyします。
+
+   ```
+   oc apply -f dest1/canary.yaml
+   ```
+
+2. ダッシュボードを確認し、dest1のv1とv2にトラフィックが送られるようになったことを確認してください。また、レスポンスに「Hello from dest1-v1!!」「Hello from dest1-v2!!」が交互に表示されることを確認してください。
+
+   ![](images/ossm_3.png)
 
 # 応用問題
 
