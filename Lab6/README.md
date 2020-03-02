@@ -23,7 +23,7 @@ git clone https://github.com/16yuki0702/sample-quarkus-0.20.0.git
     oc new-app jenkins-ephemeral
     ```
 
-3. Jenkinsのメモリ上限を増やします。openshiftコンソールから Advanced > Projects > user01-app > Workloadsタブ > jenkinsの行 を選び、右上の「Actions」から「Edit Deployment Config」を選択してください。
+3. Jenkinsのメモリ上限を増やします。openshiftコンソールから Developer > Advanced > Project Details > Workloadsタブ > jenkinsの行 を選び、右上の「Actions」から「Edit Deployment Config」を選択してください。
 
     ![](images/jenkins_edit_deploymentconfig_1.png)
 
@@ -34,7 +34,10 @@ git clone https://github.com/16yuki0702/sample-quarkus-0.20.0.git
 5. Lab5で既にビルドを作成していた場合、作成したBuild Config等を削除して作り直していきます。下記でApplicatoinの設定を全て削除します。(Hands-on中にproject内にゴミが溜まってうまく動かなくなった場合も、下記でApplicatoin設定を削除してみてください)
 
     ```
-    ./jenkins/delete-quarkus-app.sh
+    $ cd /projects/sample-quarkus-0.20.0 (CodeReadyの場合
+    $ cd /home/userxx/sample-quarkus-0.20.0 (踏み台の場合)
+    
+    $ ./jenkins/delete-quarkus-app.sh
     ```
 
 6. 下記コマンドを入力し、Build Config を作成します。

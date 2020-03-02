@@ -10,11 +10,11 @@ Node.jsアプリケーションを作成し、MongoDBと接続する上で必要
 1. プロジェクトを選択します
 
     プロジェクトは，**必ずご自身のログイン時のユーザー名 (例: "user01")** のものを選択してください。
-    Home > Project > user01　 (例)
+    Administrator > Home > Project > user01　 (例)
 
-    ![](images/create_application_using_existedImage_1.png)
+    ![](images/prepate_1.png)
 
-1. +Add > From Catalog > と選択し、「mongodb (ephemeral)」と検索し、MongoDB(Ephemeral)を選択してください。
+1. Developer > +Add > From Catalog > と選択し、「mongodb (ephemeral)」と検索し、MongoDB(Ephemeral)を選択してください。
 
     ![](images/mongo1.png)
 
@@ -34,7 +34,7 @@ Node.jsアプリケーションを作成し、MongoDBと接続する上で必要
 
 # Node.jsアプリケーションを構築
 
-1. 次にNode.jsのアプリケーションを構築します。+Add > From Catalog > と進み、「Node.js」と検索し、
+1. 次にNode.jsのアプリケーションを構築します。Developer > +Add > From Catalog > と進み、「Node.js」と検索し、
 
    Node.jsを選択してください。(Node.js + MongoDBや、Node.js + MongoDB(Ephemeral)ではありません)
 
@@ -52,7 +52,7 @@ Node.jsアプリケーションを作成し、MongoDBと接続する上で必要
 
 # Node.jsとMongoDBを繋げる
 
-1. 最後に作成したNode.jsアプリケーションからMongoDBに接続する設定を行います。Topologyを開いてNodeを選択し、右上の「Actions」を選択し、「Edit Deployment Config」を選択してください。
+1. 最後に作成したNode.jsアプリケーションからMongoDBに接続する設定を行います。Topologyを開いてNodeを選択し、右上の「Actions」を選択し、「Edit Deployment」を選択してください。
 
    ![](images/node_mongo1.png)
 

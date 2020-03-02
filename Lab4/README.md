@@ -68,11 +68,6 @@ Blue Green Deploymentとは、異なるバージョンのアプリケーショ�
     ...
     ```
 
-    >Tips:
-    >
-    >以下のようにしてURLのみを取得することもできます
-    >oc get route bluegreen --template='{{ .spec.host }}'
-
 9. 今度はトラフィックをGreenに向けます。
 
     ```
@@ -195,7 +190,7 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
    $ oc set env dc/rolling RESPONSE="Hello from new roll"
    ```
 
-4. Advanced > Projects > 自身のProject名 > Workloadsタブ > Rolling の横の #数字 を選択します。
+4. Administrator > Home > Projects > 自身のProject名 > Workloadsタブ > Rolling の横の #数字 を選択します。
 
    ![](images/rolling1.png)
 
@@ -233,7 +228,7 @@ Rolling Updateは新しいバージョンのアプリケーションのPodを少
    ...
    ```
 
-9. Advanced > Projects > 自身のProject名 > Workloadsタブ > Rolling の横の #数字 を再度選択します。Pod名が変わっていることを確認します。(#数字 はDeployの世代番号を表しています)
+9. Administrator > Home > Projects > 自身のProject名 > Workloadsタブ > Rolling の横の #数字 を再度選択します。Pod名が変わっていることを確認します。(#数字 はDeployの世代番号を表しています)
 
    ![](images/rolling3.png)
 
